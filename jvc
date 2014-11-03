@@ -22,7 +22,8 @@ if [ -z $2 ]; then
     xmlstarlet sel -t -v  "//topic/titre/text()" ~/.jvc/topics.xml && echo -e "\n"
 
 elif [ $2 == "author" ]; then
-    xmlstarlet sel -t -v  "//topic[auteur=\"$3\"]/titre/text()" ~/.jvc/topics.xml && echo -e "\n"
+    curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/forums/0-$url-0-1-0-1-1-$(echo $3 | tr '[[:upper:]]' '[[:lower:]]').xml > ~/.jvc/search.xml
+    xmlstarlet sel -t -v "//topic/titre/text()" ~/.jvc/search.xml && echo -e "\n"
 
 elif [ $2 == "topic" ]; then
     postNumber=`xmlstarlet sel -t -v "//topic[titre=\"$3\"]/nb_reponses/text()" ~/.jvc/topics.xml`
@@ -35,6 +36,6 @@ elif [ $2 == "topic" ]; then
     xmlstarlet sel -t -m "//contenu" -v "li[@class=\"post\"]/p" ~/.jvc/posts.xml
 
 elif [ $2 == "search" ]; then
-    curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/forums/0-$url-0-1-0-1-2-$3.xml > ~/.jvc/search.xml
-    xmlstarlet sel -t -v  "//topic/titre/text()" ~/.jvc/search.xml && echo -e "\n"
+    curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/forums/0-$url-0-1-0-1-2-$(echo $3 | tr '[[:upper:]]' '[[:lower:]]').xml > ~/.jvc/search.xml
+    xmlstarlet sel -t -v "//topic/titre/text()" ~/.jvc/search.xml && echo -e "\n"
 fi
