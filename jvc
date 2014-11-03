@@ -10,16 +10,16 @@ function installation
 
 installation
 case $1 in 
-    linux) url=http://ws.jeuxvideo.com/forums/0-38-0-1-0-1-0-0.xml;;
+    linux) url=38;;
     15-18) url=http://ws.jeuxvideo.com/forums/0-50-0-1-0-1-0-0.xml;;
     commu) url=http://ws.jeuxvideo.com/forums/0-1000021-0-1-0-1-0-0.xml;;
     creajeux) url=http://ws.jeuxvideo.com/forums/0-31-0-1-0-1-0-0.xml;;
     creaweb) url=http://ws.jeuxvideo.com/forums/0-30-0-1-0-1-0-0.xml;;
 esac
 
-curl -s -u app_and_gnw:FC?4554? $url > ~/.jvc/topics.xml
+curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/forums/0-$url-0-1-0-1-0-0.xml > ~/.jvc/topics.xml
 if [ -z $2 ]; then
-    xmlstarlet sel -t -v  "//topic/titre/text()" && echo -e "\n"
+    xmlstarlet sel -t -v  "//topic/titre/text()" ~/.jvc/topics.xml && echo -e "\n"
 
 elif [ $2 == "author" ]; then
     xmlstarlet sel -t -v  "//topic[auteur=\"$3\"]/titre/text()" ~/.jvc/topics.xml && echo -e "\n"
@@ -33,5 +33,8 @@ elif [ $2 == "topic" ]; then
     echo $urltopic
     curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/$urltopic-$pageNumber-0-1-0-0.xml > ~/.jvc/posts.xml
     xmlstarlet sel -t -m "//contenu" -v "li[@class=\"post\"]/p" ~/.jvc/posts.xml
-fi
 
+elif [ $2 == "search" ]; then
+    curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/forums/0-$url-0-1-0-1-2-$3.xml > ~/.jvc/search.xml
+    xmlstarlet sel -t -v  "//topic/titre/text()" ~/.jvc/search.xml && echo -e "\n"
+fi
