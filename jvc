@@ -33,9 +33,10 @@ elif [ $2 == "topic" ]; then
     urltopic=${urltopic%-1-0-1-0-0.xml}
     echo $urltopic
     curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/$urltopic-$pageNumber-0-1-0-0.xml > ~/.jvc/posts.xml
-    xmlstarlet sel -t -m "//contenu" -v "li[@class=\"post\"]/p" ~/.jvc/posts.xml
+    xmlstarlet sel -t -v "//li[@class=\"post\"]/p/text()" ~/.jvc/posts.xml | sed s/"&lt;"/"<"/g | sed s/"&gt;"/">"/g
+
 
 elif [ $2 == "search" ]; then
     curl -s -u app_and_gnw:FC?4554? http://ws.jeuxvideo.com/forums/0-$url-0-1-0-1-2-$(echo $3 | tr '[[:upper:]]' '[[:lower:]]').xml > ~/.jvc/search.xml
-    xmlstarlet sel -t -v "//topic/titre/text()" ~/.jvc/search.xml && echo -e "\n"
+    xmlstarlet sel -t -v "//topic/titre|auteur/text()" ~/.jvc/search.xml && echo -e "\n"
 fi
