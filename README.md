@@ -6,8 +6,8 @@
 
 ###Dépendances  
 
-**curl**  
-**xmlstarlet**  
+**libcurl**  
+**tinyxml**  
 
 ###Autre  
 
