@@ -1,16 +1,19 @@
+# jvc
+
+jvc is a command-line utility for browsing Jeuxvideo.com forums.
+
 ###Usage
 
-`jvc [nom du forum]` : Affiche les topics  de la 1e page  
-`jvc [nom du forum] author [auteur]` : Recherche les topics du forum dont l'auteur est [auteur]  
-`jvc [nom du forum] search [mot(s)-clé(s) à rechercher]` : Recherche les topics dont le titre contient les mots-clés   
+`jvc forum <forum_id>` : Show the first page threads
+`jvc forum <forum_alias` : Show the first page threads for the forum defined by alias
+`jvc alias forum <alias_name> <forum_id>` : Define an alias for a forum
+`jvc alias topic <alias_name> <topic_id>` : Define an alias for a topic
+`jvc topic <forum_id/alias> <topic_id/alias>` : Show the last page of this topic
+`jvc topic <forum_id/alias> <topic_id/alias> <page_number>` : Show the specified page for this topic
+`jvc name <forum_id>` : Get the name of the forum
+`jvc search <keyword>` : Search forums with <keyword> in their names
 
-###Dépendances  
+###Dependencies
 
-**libcurl**  
-**tinyxml**  
-
-###Autre  
-
-Les fichiers XML télécharges sont stockés dans *~/.jvc/*  
-   
-Si vous rencontrez des problèmes ou voudriez une nouvelle fonctionnalité n'hésitez pas à ouvrir un ticket :)   
+- Ruby
+- Nokogiri (`gem install nokogiri`)

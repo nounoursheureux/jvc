@@ -1,0 +1,95 @@
+---
+forums:
+  Informatique: 1
+  Rétrogaming: 2
+  Petites Annonces: 3
+  Jeu en ligne: 4
+  Gamecube: 5
+  Matériel Informatique: 6
+  Général Jeux Vidéo: 7
+  PlayStation: 8
+  Nintendo 64: 9
+  Xbox: 10
+  Macintosh: 11
+  Dreamcast: 12
+  Suggestions jeuxvideo.com: 13
+  Gameboy Advance: 14
+  Blabla moins de 15 ans: 15
+  Smartphone & tablettes: 17
+  PlayStation 2: 18
+  Gameboy: 19
+  Football: 20
+  Rugby: 21
+  Sports mécaniques: 22
+  Sports de glisse: 23
+  Musique: 25
+  Cinéma: 26
+  BD - Mangas - Comics: 27
+  TV - HiFi- Home Cinema: 28
+  Basket: 29
+  Création de sites web: 30
+  Création de Jeux: 31
+  Télévision & Séries: 32
+  Tennis: 33
+  Livres: 34
+  Cours et Devoirs: 35
+  Guerre des Consoles: 36
+  Jeux de rôle: 37
+  Linux: 38
+  Nature et Animaux: 39
+  PlayStation Portable: 42
+  Arts martiaux / Sports de combat: 45
+  Cyclisme: 46
+  Programmation: 47
+  Arts Graphiques: 48
+  Business du jeu vidéo: 49
+  Blabla 15-18 ans: 50
+  Blabla 18-25 ans: 51
+  Blabla 25-35 ans: 52
+  Blabla 35 ans et plus: 53
+  Humour: 54
+  Politique: 55
+  Nintendo DS: 56
+  Astronomie: 57
+  Ecriture: 58
+  Histoire: 59
+  PlayStation 3: 60
+  Xbox 360: 61
+  Wii: 62
+  Collectionneurs: 64
+  Sciences & Technologies: 65
+  Tuning PC: 66
+  Cuisine et Pâtisserie: 67
+  Philosophie: 68
+  Actualités: 69
+  Métiers & Orientation: 70
+  Jeux: 71
+  Héros de jeux vidéo: 72
+  Jeux video et handicap: 74
+  Import: 75
+  Sondages: 76
+  Magazines de jeux vidéo: 77
+  Musculation & nutrition: 78
+  Catch: 79
+  Voyage: 80
+  Contribuer à jeuxvideo.com: 81
+  Tennis de table: 82
+  Québec: 83
+  E-Sport: 84
+  Sport: 86
+  Communauté: 87
+  Boxe: 88
+  Paranormal: 89
+  Internet: 90
+  STR (Stratégie Temps Réel): 91
+  FPS & TPS: 92
+  RPG (Role Playing Game): 93
+  Jeux d\aventure': 94
+  Jeux de courses: 95
+  Jeux de sports: 96
+  Free to play: 97
+  Animation: 98
+  Gaming Live & Chroniques: 99
+
+topics:
+  default: 1
