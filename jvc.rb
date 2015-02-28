@@ -9,14 +9,6 @@ def usage
     exit
 end
 
-def is_number(num)
-    begin
-        !!Integer(num)
-    rescue ArgumentError,TypeError
-        false
-    end
-end
-
 def help_topic
     puts 'jvc topic <forum_id> <topic_id>'
     puts 'or jvc topic <forum_id> <topic_id> <page_number>'
@@ -43,16 +35,16 @@ def help_name
 end
 
 def search(keyword)
-    str = download 'http://ws.jeuxvideo.com/search_forums/' << keyword
+    str = download "http://ws.jeuxvideo.com/search_forums/#{keyword}"
 
     if $config.has_key? keyword
-        puts keyword + '|' + $config[keyword].to_s
+        puts "#{keyword}|#{$config[keyword].to_s}"
     else
         xml = Nokogiri::XML str
         xml.xpath('//forum').each do |forum|
             name = forum.children.css('nom').text
             id = forum.children.css('id').text
-            puts name << '|' << id
+            puts "#{name}|#{id}"
         end
     end
 end
@@ -73,13 +65,13 @@ def download(url)
 end
 
 def forum_name(fid)
-    str = download 'http://ws.jeuxvideo.com/forums/0-' + fid.to_s + '-0-1-0-1-0-0.xml'
+    str = download "http://ws.jeuxvideo.com/forums/0-#{fid.to_s}-0-1-0-1-0-0.xml"
     xml = Nokogiri::XML str
     return xml.xpath('//nom_forum').first.text
 end
 
 def name_or_id(list,id)
-    if is_number id
+    if id.is_a? Integer
         return id
     else
         if $config[list].has_key? id
@@ -91,7 +83,7 @@ def name_or_id(list,id)
 end
 
 def topic_list(fid)
-    str = download 'http://ws.jeuxvideo.com/forums/0-' + fid.to_s + '-0-1-0-1-0-0.xml'
+    str = download "http://ws.jeuxvideo.com/forums/0-#{fid.to_s}-0-1-0-1-0-0.xml"
     xml = Nokogiri::XML str
     topics = []
     authors = []
@@ -116,19 +108,19 @@ def topic_list(fid)
 end
 
 def read_topic(fid,tid,page)
-    str = download 'http://ws.jeuxvideo.com/forums/1-' + fid.to_s + '-' + tid.to_s + '-' + page + '-0-1-0-0.xml'
+    str = download "http://ws.jeuxvideo.com/forums/1-#{fid.to_s}-#{tid.to_s}-#{page}'-0-1-0-0.xml"
     xml = Nokogiri::XML str
     html = Nokogiri::HTML xml.xpath('//contenu').first.text
     html.css('ul.m1,ul.m2').each do |msg|
         author = msg.children.css('a.pseudo > text()').text.strip
         text = msg.children.css('p.message').text.gsub!("\n"," ")
-        puts author + ":" + text 
+        puts "#{author}:#{text}"
     end
 
 end
 
 def last_page(fid,tid)
-    str = download 'http://ws.jeuxvideo.com/forums/1-' + fid.to_s + '-' + tid.to_s + '-1-0-1-0-0.xml'
+    str = download "http://ws.jeuxvideo.com/forums/1-#{fid.to_s}-#{tid.to_s}-1-0-1-0-0.xml"
     xml = Nokogiri::XML str
     return xml.xpath('//count_page').first.text
 end
