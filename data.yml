@@ -1,5 +1,6 @@
 ---
 forums:
+  default: 1
   Informatique: 1
   Rétrogaming: 2
   Petites Annonces: 3
